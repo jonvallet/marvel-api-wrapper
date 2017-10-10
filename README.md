@@ -33,5 +33,6 @@ You can see Swagger-UI at [https://editor.swagger.io/](https://editor.swagger.io
 To run the tests suite, simply execute
 ```sh
 $ ./sbt test
+```
 
 There is also a postman collection you can import to test it locally in the postman folder
