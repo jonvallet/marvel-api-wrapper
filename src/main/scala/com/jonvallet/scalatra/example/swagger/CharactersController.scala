@@ -1,11 +1,8 @@
-package org.scalatra.example.swagger
-
-import java.util.Properties
+package com.jonvallet.scalatra.example.swagger
 
 import org.scalatra._
 import org.scalatra.swagger.ResponseMessage
 
-import scala.io.Source
 import scala.util.{Failure, Success}
 
 // Swagger-specific Scalatra imports

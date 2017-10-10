@@ -1,4 +1,4 @@
-package org.scalatra.example.swagger
+package com.jonvallet.scalatra.example.swagger
 
 import java.util.Properties
 

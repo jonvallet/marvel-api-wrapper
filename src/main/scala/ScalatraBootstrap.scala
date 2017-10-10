@@ -1,6 +1,8 @@
-import org.scalatra.example.swagger._
+import com.jonvallet.scalatra.example.swagger._
 import org.scalatra.LifeCycle
 import javax.servlet.ServletContext
+
+import com.jonvallet.scalatra.example.swagger.{CharactersController, CharactersSwagger, ResourcesApp}
 
 class ScalatraBootstrap extends LifeCycle {
 

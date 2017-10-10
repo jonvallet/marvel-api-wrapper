@@ -1,4 +1,4 @@
-package org.scalatra.example.swagger
+package com.jonvallet.scalatra.example.swagger
 
 import org.scalatest.{Failed, FunSuite}
 
@@ -6,7 +6,7 @@ import scala.util.{Failure, Success}
 
 class MarvelClientSpec extends FunSuite {
 
-  import Config._
+  import com.jonvallet.scalatra.example.swagger.Config._
 
   test(
   "auth with privateKey=privateKey" +
