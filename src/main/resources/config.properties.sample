@@ -1,5 +1,5 @@
 #Add your public and private marvel keys and rename the file to config.properties
 publicKey=
 privateKye=
-endPoint=http://gateway.marvel.com/v1/public/characters
+endpoint=http://gateway.marvel.com/v1/public/characters
 googleTranslateApiKey=
