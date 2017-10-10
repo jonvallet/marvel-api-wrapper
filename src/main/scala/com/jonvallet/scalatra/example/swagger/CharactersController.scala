@@ -70,14 +70,21 @@ class CharactersController(implicit val swagger: Swagger) extends ScalatraServle
       summary "Get a list of a characters powers"
       tags "characters"
       parameters pathParam[String]("characterId").description("Character Id")
+      parameter queryParam[Option[String]]("language").description("Language code to translete to")
       responseMessage errorResponse)
 
   get("/:characterId/powers", operation(characterPowers)) {
-    client.getCharacterPowers(params("characterId")) match {
+    val characterPowers = client.getCharacterPowers(params("characterId")) match {
       case Success(characterPowers) => characterPowers
       case Failure(error) =>
         error.printStackTrace()
         halt(404, errorResponse)
+    }
+    params.get("language") match {
+      case None => characterPowers
+      case Some(language) =>
+        val translateText = GoogleTranslate.translate(googleKey, characterPowers.powers, language)
+        CharacterPowers(characterPowers.id, translateText)
     }
   }
 
