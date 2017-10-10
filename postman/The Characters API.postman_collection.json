@@ -1,0 +1,103 @@
+{
+	"variables": [],
+	"info": {
+		"name": "The Characters API",
+		"_postman_id": "4a0fb3a0-2638-7241-ecea-72f0c8167abb",
+		"description": "Docs for the Characters API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "characters",
+			"description": "Folder for characters",
+			"item": [
+				{
+					"name": "Show all marvel characters ids",
+					"request": {
+						"url": "http://localhost:8080/characters/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Find a marvel character by id",
+					"request": {
+						"url": "http://localhost:8080/characters/1009610",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of a characters powers",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/characters/1009610/powers?language=es",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"1009610",
+								"powers"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "es",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of a characters powers in Spanish",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/characters/1009610/powers?language=es",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"1009610",
+								"powers"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "es",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
