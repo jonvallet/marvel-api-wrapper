@@ -33,6 +33,8 @@ class CharactersController(implicit val swagger: Swagger) extends ScalatraServle
 
   import Config._
 
+  val client = new MarvelClient(publicKey, privateKey, client_endpoint)
+
   val getCharacters: SwaggerSupportSyntax.OperationBuilder =
     (apiOperation[List[Character]]("getCharactersIds")
       summary "Show all marvel characters ids"
@@ -41,9 +43,11 @@ class CharactersController(implicit val swagger: Swagger) extends ScalatraServle
       )
 
   get("/", operation(getCharacters)) {
-    new MarvelClient(publicKey, privateKey, client_endpoint).getAll match {
+    client.getAll match {
       case Success(value) => value
-      case Failure(error) => error
+      case Failure(error) =>
+        error.printStackTrace()
+        halt(404, error)
     }
   }
 
@@ -56,22 +60,30 @@ class CharactersController(implicit val swagger: Swagger) extends ScalatraServle
       responseMessage errorResponse)
 
   get("/:characterId", operation(findByCharacterId)) {
-    new MarvelClient(publicKey, privateKey,client_endpoint).getCharacter(params("characterId")) match {
+    client.getCharacter(params("characterId")) match {
       case Success(value) => value
-      case Failure(_) => halt(404, errorResponse)
+      case Failure(error) =>
+        error.printStackTrace()
+        halt(404, errorResponse)
     }
   }
 
   val characterPowers: SwaggerSupportSyntax.OperationBuilder =
-    (apiOperation[List[String]]("getCharacterPowers")
+    (apiOperation[CharacterPowers]("getCharacterPowers")
       summary "Get a list of a characters powers"
       tags "characters"
       parameters pathParam[String]("characterId").description("Character Id")
       responseMessage errorResponse)
 
   get("/:characterId/powers", operation(characterPowers)) {
-    ???
+    client.getCharacterPowers(params("characterId")) match {
+      case Success(characterPowers) => characterPowers
+      case Failure(error) =>
+        error.printStackTrace()
+        halt(404, errorResponse)
+    }
   }
+
 }
 
 

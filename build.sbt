@@ -17,5 +17,6 @@ libraryDependencies ++= Seq(
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 libraryDependencies += "io.spray" %%  "spray-json" % "1.3.3"
 libraryDependencies +=  "org.scalaj" %% "scalaj-http" % "2.3.0"
+libraryDependencies += "net.ruippeixotog" %% "scala-scraper" % "2.0.0"
 
 enablePlugins(JettyPlugin)
