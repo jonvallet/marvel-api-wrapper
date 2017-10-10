@@ -6,15 +6,17 @@ import scala.util.{Failure, Success}
 
 class MarvelClientSpec extends FunSuite {
 
+  import Config._
+
   test(
-  "auth with privateKey=45f2967954fca690f33361961ed4d29cf5bfd3f1 " +
-    "and publicKey=99ffc7f9340c3e5d8a1b57b7356435b4 " +
+  "auth with privateKey=privateKey" +
+    "and publicKey=publicKey " +
     "and timeStamp=1 " +
-    "should have a hash=db4649f56d310bf148557fd9d9984b81") {
+    "should have a hash=90c0bdf9b064fe3c9e373d9547eea445") {
 
-    val client = new MarvelClient()
+    val client = new MarvelClient("privateKey", "publicKey", "endpoint")
 
-    val expectedValue = "db4649f56d310bf148557fd9d9984b81"
+    val expectedValue = "90c0bdf9b064fe3c9e373d9547eea445"
     val actualValue = client.auth("1")
 
     actualValue.toMap.get("hash") match {
@@ -24,7 +26,7 @@ class MarvelClientSpec extends FunSuite {
   }
 
   test("test get all") {
-    val client = new MarvelClient()
+    val client = new MarvelClient(publicKey, privateKey, client_endpoint)
     val result = client.getAll
 
     result match {
@@ -34,7 +36,7 @@ class MarvelClientSpec extends FunSuite {
   }
 
   test("test get character") {
-    val client = new MarvelClient()
+    val client = new MarvelClient(publicKey, privateKey, client_endpoint)
     val result = client.getCharacter("1017100")
 
     result match {

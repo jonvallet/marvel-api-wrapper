@@ -15,9 +15,9 @@ object MarvelClient {
   def md5(s: String): String = MessageDigest.getInstance("MD5").digest(s.getBytes).map("%02x".format(_)).mkString
 }
 
-class MarvelClient (publicKey : String = "99ffc7f9340c3e5d8a1b57b7356435b4",
-                    privateKey : String = "45f2967954fca690f33361961ed4d29cf5bfd3f1",
-                    endpoint: String = "http://gateway.marvel.com/v1/public/characters") extends DefaultJsonProtocol {
+class MarvelClient (publicKey : String,
+                    privateKey : String,
+                    endpoint: String) extends DefaultJsonProtocol {
 
   import MarvelClient._
   implicit val thumbnailFormat = jsonFormat2(Thumbnail.apply)

@@ -69,3 +69,5 @@ jrebel.lic
 /.lib/
 
 .history
+
+config.properties
